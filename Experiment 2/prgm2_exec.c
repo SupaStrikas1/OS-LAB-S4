@@ -1,3 +1,5 @@
+// Running sub-process – fork(), exec()
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -16,12 +18,12 @@ void main()
     else if (p == 0)
     {
         printf("Child process (PID: %d) executing ...\n", getpid());
-        char *args[]={"./abc",NULL};
-        execvp(args[0],args);
+        char *args[] = {"./abc", NULL};
+        execvp(args[0], args);
     }
     else
     {
-        printf("This is Parent process, ID : %d\n", getpid());
         wait(NULL);
+        printf("\nChild process completed.\n");
     }
 }

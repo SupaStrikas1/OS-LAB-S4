@@ -1,3 +1,5 @@
+// Bankers Algorithm for Deadlock Avoidance.
+
 #include <stdio.h>
 #include <stdbool.h>
 

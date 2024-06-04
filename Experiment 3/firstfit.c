@@ -34,7 +34,10 @@ void firstFit(int blockSize[], int m, int processSize[], int n)
 
     printf("\nFragments : \n");
     for (int i = 0; i < m; i++)
+    {
         printf("%d  ", blockSize[i]);
+    }
+    printf("\n");
 }
 
 int main()

@@ -1,11 +1,13 @@
+// LRU Page Replacement Algorithm
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_FRAMES 10 
-#define MAX_REFERENCES 50 
+#define MAX_FRAMES 10
+#define MAX_REFERENCES 50
 
-int frames[MAX_FRAMES];  
-int counter[MAX_FRAMES]; 
+int frames[MAX_FRAMES];
+int counter[MAX_FRAMES];
 
 int findLRU()
 {
@@ -30,8 +32,8 @@ void lruPageReplacement(int pages[], int numPages, int numFrames)
 
     for (int i = 0; i < numFrames; i++)
     {
-        frames[i] = -1; 
-        counter[i] = 0; 
+        frames[i] = -1;
+        counter[i] = 0;
     }
 
     for (int i = 0; i < numPages; i++)

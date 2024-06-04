@@ -1,3 +1,5 @@
+// LFU Page Replacement Algorithm
+
 #include <stdio.h>
 #include <limits.h>
 

@@ -1,3 +1,5 @@
+// FCFS Disk Scheduling Algorithm
+
 #include <stdio.h>
 #include <stdlib.h>
 
