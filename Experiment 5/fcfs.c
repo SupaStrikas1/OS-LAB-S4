@@ -20,11 +20,11 @@ void findAvgT(int processes[], int n, int bt[], int at[], int wt[], int tat[])
 
 void fcfs(int processes[], int n, int bt[], int at[])
 {
-    int completed = 0, time = 0, tat[n], wt[n], flag = 0;
+    int completed = 0, time = at[0], tat[n], wt[n];
 
     while (completed < n)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = completed; i < n; i++)
         {
             if (at[i] <= time)
             {
@@ -32,17 +32,11 @@ void fcfs(int processes[], int n, int bt[], int at[])
                 tat[i] = time - at[i];
                 wt[i] = tat[i] - bt[i];
                 completed++;
-                flag = 1;
             }
             else
             {
-                time++;
+                time = at[i];
             }
-        }
-        if (!flag)
-        {
-            time++;
-            flag = 0;
         }
     }
 
@@ -51,7 +45,7 @@ void fcfs(int processes[], int n, int bt[], int at[])
 
 int main()
 {
-    int n;
+    int n, temp;
 
     printf("Enter the number of processes: ");
     scanf("%d", &n);
@@ -65,6 +59,27 @@ int main()
         processes[i] = i + 1;
         printf("Enter arrival time and burst time for Process %d: ", i + 1);
         scanf("%d%d", &arrival_time[i], &burst_time[i]);
+    }
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (arrival_time[j] > arrival_time[j + 1])
+            {
+                temp = arrival_time[j];
+                arrival_time[j] = arrival_time[j + 1];
+                arrival_time[j + 1] = temp;
+
+                temp = burst_time[j];
+                burst_time[j] = burst_time[j + 1];
+                burst_time[j + 1] = temp;
+
+                temp = processes[j];
+                processes[j] = processes[j + 1];
+                processes[j + 1] = temp;
+            }
+        }
     }
 
     fcfs(processes, n, burst_time, arrival_time);
