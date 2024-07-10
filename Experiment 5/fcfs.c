@@ -24,7 +24,7 @@ void fcfs(int processes[], int n, int bt[], int at[])
 
     while (completed < n)
     {
-        for (int i = completed; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             if (at[i] <= time)
             {
@@ -36,6 +36,10 @@ void fcfs(int processes[], int n, int bt[], int at[])
             else
             {
                 time = at[i];
+                time += bt[i];
+                tat[i] = time - at[i];
+                wt[i] = tat[i] - bt[i];
+                completed++;
             }
         }
     }
